@@ -9,7 +9,7 @@ def get_prefix(bot, message):
         return ['asfajaskdaj']
 
     else:
-        prefix = ['.']
+        prefix = ['~']
 
     return commands.when_mentioned_or(*prefix)(bot, message)
 
@@ -29,13 +29,13 @@ if __name__ == '__main__':
 @bot.event
 async def on_ready():
 
-    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id)\nVersion: {discord.__version__}\n')
+    print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
 
     await bot.change_presence(activity=discord.Activity(name="Building Cities...",type=0))
 
     print("Logged in and booted!")
 
-print("Connecting to discordapp")
+print("Connecting to discordapp\n")
 
 tooken = pickle.load(open('tooken.data','rb'))
 bot.run(tooken, bot=True, reconnect=True)
