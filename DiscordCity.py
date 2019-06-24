@@ -33,9 +33,9 @@ async def on_ready():
 
     await bot.change_presence(activity=discord.Activity(name="Building Cities...",type=0))
 
-    print("Logged in and booted!")
+    print("Logged in and booted!\n")
 
-print("Connecting to discordapp\n")
+print("Connecting to discordapp")
 
 tooken = pickle.load(open('tooken.data','rb'))
 bot.run(tooken, bot=True, reconnect=True)
