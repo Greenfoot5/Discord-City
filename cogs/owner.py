@@ -98,7 +98,7 @@ class Owner(commands.Cog):
     @commands.is_owner()
     async def restart(self, ctx):
         """
-        Restarts the bot and pulls from github
+        Restarts the bot and pulls from github.
         """
         await ctx.send("Restarting...")
         await self.bot.close()
