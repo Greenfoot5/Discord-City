@@ -6,43 +6,45 @@ import discord
 from discord.ext import commands
 
 
-def get_prefix(bot, message):
+class DiscordCity(commands.Bot):
+    def __init__(self):
+        super().__init__(
+            command_prefix=self._get_prefix,
+            decription="A bot for Discord Hack Week."
+        )
 
-    if not message.guild:
-        return ['asfajaskdaj']
+        self.initial_extensions = ["jishaku"]
+        self.load_exts()
 
-    else:
-        prefix = ['~']
+    def _get_prefix(self, bot, message):
+        if not message.guild:
+            return ['asfajaskdaj']
+        else:
+            prefix = ['~']
 
-    return commands.when_mentioned_or(*prefix)(bot, message)
+        return commands.when_mentioned_or(*prefix)(bot, message)
+
+    def load_exts(self):
+        for extension in self.initial_extensions:
+            try:
+                self.load_extension(extension)
+                print(f"Successfully loaded extension - {extension}")
+            except Exception:
+                print(
+                    f"Failed to load extension - {extension}", file=sys.stderr)
+                traceback.print_exc()
+
+    async def on_ready(self):
+        await self.change_presence(activity=discord.Activity(name="Building Cities...", type=discord.ActivityType.playing))
+
+        print(f"\n\nLogged in as: {self.user.name} - {self.user.id}")
+        print(f"Version: {discord.__version__}\n")
+
+    def run(self):
+        print("Connecting to discordapp")
+        tooken = pickle.load(open('tooken.data', 'rb'))
+        super().run(tooken, bot=True, reconnect=True)
 
 
-initial_extensions = ["jishaku"]
-
-bot = commands.Bot(command_prefix=get_prefix,
-                   decription="A bot for Discord Hack Week.", self_bot=False)
-
-if __name__ == '__main__':
-    for extension in initial_extensions:
-        try:
-            bot.load_extension(extension)
-            print(f"Successfully loaded extension - {extension}")
-        except Exception as e:
-            print(f"Failed to load extension - {extension}", file=sys.stderr)
-            traceback.print_exc()
-
-
-@bot.event
-async def on_ready():
-
-    print(
-        f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
-
-    await bot.change_presence(activity=discord.Activity(name="Building Cities...", type=0))
-
-    print("Logged in and booted!\n")
-
-print("Connecting to discordapp")
-
-tooken = pickle.load(open('tooken.data', 'rb'))
-bot.run(tooken, bot=True, reconnect=True)
+if __name__ == "__main__":
+    DiscordCity().run()
