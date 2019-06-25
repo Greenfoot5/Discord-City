@@ -42,7 +42,8 @@ class DiscordCity(commands.Bot):
 
     def run(self):
         print("Connecting to discordapp")
-        tooken = pickle.load(open('tooken.data', 'rb'))
+        with open("filename", "rb") as f:
+            tooken = pickle.load(f)
         super().run(tooken, bot=True, reconnect=True)
 
 
