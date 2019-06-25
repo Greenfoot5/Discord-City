@@ -10,7 +10,7 @@ class DiscordCity(commands.Bot):
     def __init__(self):
         super().__init__(
             command_prefix=self._get_prefix,
-            decription="A bot for Discord Hack Week."
+            description="A bot for Discord Hack Week."
         )
 
         self.initial_extensions = ["jishaku", "cogs.info"]
