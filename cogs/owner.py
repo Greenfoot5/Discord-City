@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+import asyncio
+from asyncio.subprocess import PIPE, STDOUT
 
 
 class Owner(commands.Cog):
@@ -59,7 +61,41 @@ class Owner(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def update(self,ctx):
+    async def update(self, ctx):
+        """
+        Pulls files from github.
+        """
+        async with ctx.typing():
+            p = await asyncio.create_subprocess_shell(
+                "git pull",
+                stdin=PIPE,
+                stdout=PIPE,
+                stderr=STDOUT
+            )
+            stdout, stderr = await p.communicate()
+            code = p.returncode
+
+            if stdout:
+                stdout = stdout.decode("utf-8")
+            if stderr:
+                stderr = stderr.decode("utf-8")
+
+            if stderr:
+                out = f"stdout:\n{stdout}\nstderr:\n{stderr}\n\nReturn code: {code}"
+            else:
+                out = stdout
+                if not code:
+                    out = f"stdout:\n{stdout}\nstderr:\n{stderr}\n\nReturn code: {code}"
+
+            await ctx.send(out)
+
+
+    @commands.command()
+    @commands.is_owner()
+    async def restart(self, ctx):
+        """
+        Restarts the bot and pulls from github
+        """
         await self.bot.close()
 
 
