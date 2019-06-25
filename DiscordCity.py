@@ -48,17 +48,6 @@ class DiscordCity(commands.Bot):
 
         print(f"\n\nLogged in as: {self.user.name} - {self.user.id}")
         print(f"Version: {discord.__version__}\n")
-    
-    #shutdown
-    async def shutdown(self,ctx):
-        #give shutdown command via cmd
-        #temp via file
-        open("shutdown", "a").close()
-        await self.close()
-    
-    #update
-    async def update(self,ctx):
-        await self.close()   
 
     def run(self):
         print("Connecting to discordapp")

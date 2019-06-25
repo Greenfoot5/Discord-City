@@ -49,6 +49,19 @@ class Owner(commands.Cog):
         else:
             await ctx.send("\N{WHITE HEAVY CHECK MARK}")
 
+    @commands.command()
+    @commands.is_owner()
+    async def shutdown(self,ctx):
+        #give shutdown command via cmd
+        #temp via file
+        open("shutdown", "a").close()
+        await self.bot.close()
+
+    @commands.command()
+    @commands.is_owner()
+    async def update(self,ctx):
+        await self.bot.close()
+
 
 def setup(bot):
     bot.add_cog(Owner(bot))
