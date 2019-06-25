@@ -15,7 +15,7 @@ def get_prefix(bot, message):
 
 initial_extensions = ["jishaku", "cogs.info"]
 
-bot = commands.Bot(command_prefix=get_prefix, decription="A bot for Discord Hack Week.", self_bot=False)
+bot = commands.Bot(command_prefix=get_prefix, description="A bot for Discord Hack Week.", self_bot=False)
 
 if __name__ == '__main__':
     for extension in initial_extensions:
