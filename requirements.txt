@@ -1,2 +1,1 @@
 discord.py>=1.2
-jishaku>=1.14
