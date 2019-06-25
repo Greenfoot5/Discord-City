@@ -13,7 +13,7 @@ def get_prefix(bot, message):
 
     return commands.when_mentioned_or(*prefix)(bot, message)
 
-initial_extensions = ["cogs.info", "cogs.owner"]
+initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh"]
 
 bot = commands.Bot(command_prefix=get_prefix, description="A bot for Discord Hack Week.", self_bot=False)
 
