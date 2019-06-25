@@ -13,6 +13,12 @@ class DiscordCity(commands.Bot):
             description="A bot for Discord Hack Week."
         )
 
+        self.owner_ids = [
+            270190067354435584,  # green
+            334350969196380160,  # fish
+            389814953562996736  # kat
+        ]
+
         self.initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh"]
         self.load_exts()
 
@@ -34,6 +40,9 @@ class DiscordCity(commands.Bot):
                     f"Failed to load extension - {extension}", file=sys.stderr)
                 traceback.print_exc()
 
+    async def is_owner(self, user):
+        return user.id in self.owner_ids
+
     async def on_ready(self):
         await self.change_presence(activity=discord.Activity(name="Building Cities...", type=discord.ActivityType.playing))
 
@@ -42,7 +51,7 @@ class DiscordCity(commands.Bot):
 
     def run(self):
         print("Connecting to discordapp")
-        with open("filename", "rb") as f:
+        with open("tooken.data", "rb") as f:
             tooken = pickle.load(f)
         super().run(tooken, bot=True, reconnect=True)
 
