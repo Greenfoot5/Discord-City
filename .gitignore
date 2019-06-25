@@ -9,6 +9,9 @@ __pycache__/
 # vscode projet settings
 .vscode/
 
+# shutdown file
+shutdown
+
 # C extensions
 *.so
 
