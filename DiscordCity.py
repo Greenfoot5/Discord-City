@@ -13,7 +13,7 @@ class DiscordCity(commands.Bot):
             decription="A bot for Discord Hack Week."
         )
 
-        self.initial_extensions = ["jishaku"]
+        self.initial_extensions = ["jishaku", "cogs.info"]
         self.load_exts()
 
     def _get_prefix(self, bot, message):
