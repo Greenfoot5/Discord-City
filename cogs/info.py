@@ -30,6 +30,13 @@ class HelpCommand(commands.MinimalHelpCommand):
                     self.paginator.add_line(line)
                 self.paginator.add_line()
 
+    def add_bot_commands_formatting(self, commands, heading):
+        if commands:
+            # U+2022 Bullet
+            joined = ' \U00002022 '.join(c.name for c in commands)
+            self.paginator.add_line(f'__**{heading}**__')
+            self.paginator.add_line(joined)
+
 
 class Info(commands.Cog):
     # TODO: cog help string
