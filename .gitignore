@@ -6,6 +6,9 @@ __pycache__/
 # Any pickle data files
 *.data
 
+# vscode projet settings
+.vscode/
+
 # C extensions
 *.so
 
