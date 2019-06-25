@@ -51,12 +51,16 @@ class Owner(commands.Cog):
         else:
             await ctx.send("\N{WHITE HEAVY CHECK MARK}")
 
-    @commands.command()
+    @commands.command(aliases=["die"])
     @commands.is_owner()
     async def shutdown(self,ctx):
+        """
+        Shuts the bot down.
+        """
         #give shutdown command via cmd
         #temp via file
         open("shutdown", "a").close()
+        await ctx.send("Bye")
         await self.bot.close()
 
     @commands.command()
@@ -96,6 +100,7 @@ class Owner(commands.Cog):
         """
         Restarts the bot and pulls from github
         """
+        await ctx.send("Restarting...")
         await self.bot.close()
 
 
