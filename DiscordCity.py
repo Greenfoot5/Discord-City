@@ -1,7 +1,7 @@
 import pickle
 import sys
 import traceback
-
+import asyncio
 import discord
 from discord.ext import commands
 
@@ -57,4 +57,7 @@ class DiscordCity(commands.Bot):
 
 
 if __name__ == "__main__":
+    if "win" in sys.platform:
+        asyncio.set_event_loop(asyncio.ProactorEventLoop())
+
     DiscordCity().run()
