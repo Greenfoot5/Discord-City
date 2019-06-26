@@ -29,8 +29,10 @@ class City(commands.Cog):
                 cat.append(m)
                 added.append(m)
 
-            cat.sort(key=lambda m_: m_.display_name)
-            city_members.append(cat.copy())
+            city_members.append(
+                sorted(cat.copy(),
+                key=lambda m_: str(m_))
+            )
             cat.clear()
 
         return city_members
