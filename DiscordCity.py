@@ -1,7 +1,8 @@
+import asyncio
 import pickle
 import sys
 import traceback
-import asyncio
+
 import discord
 from discord.ext import commands
 

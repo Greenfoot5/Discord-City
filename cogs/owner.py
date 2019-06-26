@@ -1,7 +1,8 @@
-import discord
-from discord.ext import commands
 import asyncio
 from asyncio.subprocess import PIPE, STDOUT
+
+import discord
+from discord.ext import commands
 
 
 class Owner(commands.Cog):
@@ -53,12 +54,12 @@ class Owner(commands.Cog):
 
     @commands.command(aliases=["die"])
     @commands.is_owner()
-    async def shutdown(self,ctx):
+    async def shutdown(self, ctx):
         """
         Shuts the bot down.
         """
-        #give shutdown command via cmd
-        #temp via file
+        # give shutdown command via cmd
+        # temp via file
         open("shutdown", "a").close()
         await ctx.send("Bye")
         await self.bot.close()
@@ -92,7 +93,6 @@ class Owner(commands.Cog):
                     out = f"stdout:\n{stdout}\nstderr:\n{stderr}\n\nReturn code: {code}"
 
             await ctx.send(out)
-
 
     @commands.command()
     @commands.is_owner()

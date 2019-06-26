@@ -6,7 +6,8 @@ class HelpCommand(commands.MinimalHelpCommand):
     def get_opening_note(self):
         command_name = self.invoked_with
         return "Use `{0}{1} [command]` for more info on a command.\n" \
-               "You can also use `{0}{1} [Category]` for more info on a category.".format(self.clean_prefix, command_name)
+               "You can also use `{0}{1} [Category]` for more info on a category.".format(
+                   self.clean_prefix, command_name)
 
     def get_command_signature(self, command):
         parent = command.full_parent_name
