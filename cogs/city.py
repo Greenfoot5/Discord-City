@@ -31,7 +31,7 @@ class City(commands.Cog):
 
             city_members.append(
                 sorted(cat.copy(),
-                key=lambda m_: str(m_))
+                       key=lambda m_: str(m_))
             )
             cat.clear()
 
@@ -47,7 +47,6 @@ class City(commands.Cog):
             out.append(" | ".join([str(m) for m in cat]))
 
         await ctx.send("\n".join(out))
-
 
 
 def setup(bot):
