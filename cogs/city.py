@@ -24,6 +24,8 @@ class City(commands.Cog):
 
             cat = []
             for m in mem:
+                if m.display_name.startswith("!") and m.top_role == guild.default_role:
+                    added.append(m)  # hoister
                 if m in added:
                     continue
                 cat.append(m)
