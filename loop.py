@@ -11,19 +11,7 @@ b_start = f"{sys.executable} DiscordCity.py".split(' ')
 stopfile = "shutdown"
 
 if os.path.isfile(stopfile):
-    try:
-        _ = subprocess.call(["rm","-f", stopfile])
-        print("success - linux \n\n")
-    except Exception as e:
-        print(e)
-
-
-    try:
-        _ = subprocess.call(["del", stopfile], shell=True)
-        print("success - windows \n\n")
-    except Exception as e:
-        print(e)
-
+    os.remove(stopfile)
 
 while 1:
     print("getting latest version")
