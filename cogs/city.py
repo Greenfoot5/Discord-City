@@ -31,10 +31,16 @@ class City(commands.Cog):
             for m in mem:
                 if m.display_name.startswith("!") and m.top_role == guild.default_role:
                     added.append(m)  # hoister
+
+                if m == guild.owner:
+                    added.append(m)
+                    city_members.insert(0, [m])
+
                 if m in added:
                     continue
-                cat.append(m)
+
                 added.append(m)
+                cat.append(m)
 
             city_members.append(
                 sorted(cat.copy(),
@@ -46,7 +52,7 @@ class City(commands.Cog):
             for cat in reversed(city_members):
                 for m in cat:
                     if m.status == discord.Status.offline:
-                        cat.pop(cat.index(m))
+                        cat.pop(cat.index(m))  # TODO: owner will stay
                         break
                 continue
 
