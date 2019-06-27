@@ -3,6 +3,11 @@ from discord.ext import commands
 
 
 class HelpCommand(commands.MinimalHelpCommand):
+    def __init__(self):
+        super().__init__(command_attrs={
+            "help": "Shows help about the bot, a command, or a category."
+        })
+
     def get_opening_note(self):
         command_name = self.invoked_with
         return "Use `{0}{1} [command]` for more info on a command.\n" \
@@ -45,8 +50,8 @@ class HelpCommand(commands.MinimalHelpCommand):
 
 
 class Info(commands.Cog):
-    # TODO: cog help string
     """
+    Commands for being helped with the bot or getting some info about it.
     """
 
     def __init__(self, bot):

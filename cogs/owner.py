@@ -7,7 +7,7 @@ from discord.ext import commands
 
 class Owner(commands.Cog):
     """
-    Owner only commands
+    Owner only commands.
     """
 
     def __init__(self, bot):
