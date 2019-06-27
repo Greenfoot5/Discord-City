@@ -42,7 +42,7 @@ class City(commands.Cog):
 
                 if m == guild.owner:
                     added.append(m)
-                    city_members.insert(0, [m])
+                    owner = [[m]]
 
                 if m in added:
                     continue
@@ -60,10 +60,11 @@ class City(commands.Cog):
             for cat in reversed(city_members):
                 for m in cat:
                     if m.status == discord.Status.offline:
-                        cat.pop(cat.index(m))  # TODO: owner will stay
+                        cat.pop(cat.index(m))
                         break
                 continue
 
+        city_members = owner + city_members
         if len(flatten(city_members)) > max_members:
             while len(flatten(city_members)) > max_members:
                 for cat in reversed(city_members):
