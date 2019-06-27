@@ -12,6 +12,13 @@ class City(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def any_offline(self, city_members):
+        for cat in city_members:
+            for m in cat:
+                if m.status == discord.Status.offline:
+                    return True
+        return False
+
     def get_city_members(self, guild):
         added = []
         city_members = []
@@ -38,13 +45,13 @@ class City(commands.Cog):
             cat.clear()
 
         if len(city_members) > MAX_MEMBERS:
-            while len(city_members) > MAX_MEMBERS:
+            while len(city_members) > MAX_MEMBERS and self.any_offline(city_members):
                 for cat in reversed(city_members):
                     for m in cat:
                         if m.status == discord.Status.offline:
                             cat.pop(cat.index(m))
                             break
-                    break
+                    continue
         return city_members
 
     # debug command
