@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
-
 import discord
 from discord.ext import commands
+
+MAX_MEMBERS = 5  # debug, will depend on the image gen
 
 
 class City(commands.Cog):
@@ -37,6 +37,14 @@ class City(commands.Cog):
             )
             cat.clear()
 
+        if len(city_members) > MAX_MEMBERS:
+            while len(city_members) > MAX_MEMBERS:
+                for cat in reversed(city_members):
+                    for m in cat:
+                        if m.status == discord.Status.offline:
+                            cat.pop(cat.index(m))
+                            break
+                    break
         return city_members
 
     # debug command
