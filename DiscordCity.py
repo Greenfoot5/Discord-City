@@ -17,7 +17,8 @@ class DiscordCity(commands.Bot):
         self.owner_ids = [
             270190067354435584,  # green
             334350969196380160,  # fish
-            389814953562996736  # kat
+            389814953562996736,  # kat
+            286546315003953152  #Incog
         ]
 
         self.initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh"]
