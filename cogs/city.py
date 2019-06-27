@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
 
-MAX_MEMBERS = 5  # debug, will depend on the image gen
-
 
 class City(commands.Cog):
     """
@@ -19,7 +17,7 @@ class City(commands.Cog):
                     return True
         return False
 
-    def get_city_members(self, guild):
+    def get_city_members(self, guild, max_members):
         added = []
         city_members = []
 
@@ -44,8 +42,8 @@ class City(commands.Cog):
             )
             cat.clear()
 
-        if len(city_members) > MAX_MEMBERS:
-            while len(city_members) > MAX_MEMBERS and self.any_offline(city_members):
+        if len(city_members) > max_members:
+            while len(city_members) > max_members and self.any_offline(city_members):
                 for cat in reversed(city_members):
                     for m in cat:
                         if m.status == discord.Status.offline:
@@ -57,8 +55,8 @@ class City(commands.Cog):
     # debug command
     @commands.command()
     async def show_members(self, ctx):
-        members = self.get_city_members(ctx.guild)
-
+        members = self.get_city_members(ctx.guild, 5)  # debud, will change
+                                                       # once image gen is set up
         out = []
         for cat in members:
             out.append(" | ".join([str(m) for m in cat]))
