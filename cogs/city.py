@@ -42,14 +42,22 @@ class City(commands.Cog):
             )
             cat.clear()
 
+        while len(city_members) > max_members and self.any_offline(city_members):
+            for cat in reversed(city_members):
+                for m in cat:
+                    if m.status == discord.Status.offline:
+                        cat.pop(cat.index(m))
+                        break
+                continue
+
         if len(city_members) > max_members:
-            while len(city_members) > max_members and self.any_offline(city_members):
+            while len(city_members) > max_members:
                 for cat in reversed(city_members):
                     for m in cat:
-                        if m.status == discord.Status.offline:
                             cat.pop(cat.index(m))
                             break
                     continue
+
         return city_members
 
     # debug command
