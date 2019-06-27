@@ -2,6 +2,14 @@ import discord
 from discord.ext import commands
 
 
+def flatten(list_):
+    out = []
+    for elem in list_:
+        for elem2 in elem:
+            out.append(elem2)
+    return out
+
+
 class City(commands.Cog):
     """
     The commands related about generating the city.
@@ -48,7 +56,7 @@ class City(commands.Cog):
             )
             cat.clear()
 
-        while len(city_members) > max_members and self.any_offline(city_members):
+        while len(flatten(city_members)) > max_members and self.any_offline(city_members):
             for cat in reversed(city_members):
                 for m in cat:
                     if m.status == discord.Status.offline:
@@ -56,21 +64,22 @@ class City(commands.Cog):
                         break
                 continue
 
-        if len(city_members) > max_members:
-            while len(city_members) > max_members:
+        if len(flatten(city_members)) > max_members:
+            while len(flatten(city_members)) > max_members:
                 for cat in reversed(city_members):
-                    for m in cat:
-                            cat.pop(cat.index(m))
-                            break
-                    continue
+                    if cat == []:
+                        city_members.pop()
+                        break
+                    cat.pop()
+                    break
 
         return city_members
 
     # debug command
     @commands.command()
     async def show_members(self, ctx):
-        members = self.get_city_members(ctx.guild, 5)  # debud, will change
-                                                       # once image gen is set up
+        members = self.get_city_members(ctx.guild, 5)  # debug, will change
+        #                                                once image gen is set up
         out = []
         for cat in members:
             out.append(" | ".join([str(m) for m in cat]))
