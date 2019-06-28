@@ -11,7 +11,7 @@ For more help, type `~help`
 ---
 ## Running
 
-First, get yourself a valig Discord bot token and put in `tooken.py`, and finaly run it.
+First, get yourself a valid Discord bot token and put in `tooken.py`, and finaly run it.
 
 Now, make sure you have python 3.6 or newer installed on you system, then run
 
