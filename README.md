@@ -11,7 +11,9 @@ For more help, type `~help`
 ---
 ## Running
 
-Make sure you have python 3.6 or newer installed on you system, then run
+First, get yourself a valig Discord bot token and put in `tooken.py`, and finaly run it.
+
+Now, make sure you have python 3.6 or newer installed on you system, then run
 
 * `pip install -U -r requirements.txt`
 * `python DiscordCity.py`
