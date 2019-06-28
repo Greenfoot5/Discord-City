@@ -17,3 +17,5 @@ Now, make sure you have python 3.6 or newer installed on you system, then run
 
 * `pip install -U -r requirements.txt`
 * `python DiscordCity.py`
+
+(If you fail to run it, here's an [invite link](https://discordapp.com/api/oauth2/authorize?client_id=592720176081010688&permissions=0&scope=bot))
