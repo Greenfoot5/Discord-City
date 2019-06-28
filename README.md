@@ -6,7 +6,7 @@ Generates a City based upon the current server.
 ## Usage
 
 Simply run `~city` to have the city generated.
-for more help, type `~help`
+For more help, type `~help`
 
 ---
 ## Running
