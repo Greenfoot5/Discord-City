@@ -21,7 +21,7 @@ class DiscordCity(commands.Bot):
             286546315003953152  #Incog
         ]
 
-        self.initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh"]
+        self.initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh", "cogs.city"]
         self.load_exts()
 
     def _get_prefix(self, bot, message):
