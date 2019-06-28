@@ -11,14 +11,14 @@ class DiscordCity(commands.Bot):
     def __init__(self):
         super().__init__(
             command_prefix=self._get_prefix,
-            description="A bot for Discord Hack Week."
+            description="A bot for Discord Hack Week.\nGenerates a city out of the current server."
         )
 
         self.owner_ids = [
             270190067354435584,  # green
             334350969196380160,  # fish
             389814953562996736,  # kat
-            286546315003953152  #Incog
+            286546315003953152  # Incog
         ]
 
         self.initial_extensions = ["cogs.info", "cogs.owner", "cogs.eh", "cogs.city"]
