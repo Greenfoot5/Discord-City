@@ -181,6 +181,7 @@ class City(commands.Cog):
         await ctx.send("\n".join(out))
 
     @commands.command()
+    @commands.cooldown(1, 10, commands.BucketType.guild)
     async def city(self, ctx):
         """
         Generates a city out of the current server.
