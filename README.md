@@ -3,12 +3,14 @@
 Generates a City based upon the current server.
 
 ---
+
 ## Usage
 
 Simply run `~city` to have the city generated.
-For more help, type `~help`
+For more help, type `~help`.
 
 ---
+
 ## Running
 
 First, get yourself a valid Discord bot token and put in `tooken.py`, and finaly run it.
