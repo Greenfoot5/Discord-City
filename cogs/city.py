@@ -171,6 +171,7 @@ class City(commands.Cog):
 
     # debug command
     @commands.command()
+    @commands.is_owner()
     async def show_members(self, ctx):
         members = self.get_city_members(ctx.guild, 5)  # debug, will change
         #                                                once image gen is set up
