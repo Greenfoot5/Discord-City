@@ -182,7 +182,9 @@ class City(commands.Cog):
 
     @commands.command()
     async def city(self, ctx):
-        "Generates a city out of the current server."
+        """
+        Generates a city out of the current server.
+        """
         async with ctx.typing():
             colors = [m.color.to_rgb() for m in ctx.guild.members]
 
